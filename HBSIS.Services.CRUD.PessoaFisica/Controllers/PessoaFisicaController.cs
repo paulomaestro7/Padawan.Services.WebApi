@@ -105,6 +105,32 @@ namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
 
         }
 
+        [HttpPut]
+        [Route("PutBiruleiReinaldo")]
+        public ActionResult PutPessoaFisica(string PessoaFisica, string NovaPessoaFisica)
+        {
+            var result = new Result<List<PessoaFisica>>();
+            try
+            {
+                result.Data = minhaLista.Where(x => x.Nome == PessoaFisica).ToList();
+
+                result.Data.Select(s =>
+                {
+                    s.Nome = NovaPessoaFisica;
+                    return s;
+                }).ToList();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                result.Error = true;
+                result.Message = ex.Message;
+                return BadRequest(result);
+            }
+
+        }
+
 
     }
 }
