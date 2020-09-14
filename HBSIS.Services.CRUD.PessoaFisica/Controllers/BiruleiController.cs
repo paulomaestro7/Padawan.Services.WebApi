@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
 {
     [ApiController]
-    [Route("Birulei")]
-    public class PessoaFisicaController : ControllerBase
+    [Route("BiruleiApi")]
+    public class BiruleiController : ControllerBase
     {
-        public PessoaFisicaController()
+        public BiruleiController()
         {
         }
 
