@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using HBSIS.Services.Util;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
+namespace HBSIS.Services.CRUD.Controllers
 {
     [ApiController]
     [Route("BiruleiApi")]
@@ -19,7 +18,7 @@ namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
         [Route("BiruleiReinaldo")]
         public ActionResult GetPessoaFisica()
         {
-            var result = new PessoaFisica()
+            var result = new Model.PessoaFisica()
             {
                 Cpf = "044.555.554-45",
                 Ativo = true,
@@ -29,11 +28,11 @@ namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
             return Ok(result);
         }
 
-        public static List<PessoaFisica> minhaLista = new List<PessoaFisica>();
+        public static List<Model.PessoaFisica> minhaLista = new List<Model.PessoaFisica>();
 
         [HttpPost]
         [Route("postBiruleiReinaldo")]
-        public ActionResult PostPessoaFisica(PessoaFisica PessoaFisica)
+        public ActionResult PostPessoaFisica(Model.PessoaFisica PessoaFisica)
         {
             minhaLista.Add(PessoaFisica);
 
@@ -51,7 +50,7 @@ namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
         [Route("GetBiruleiReinaldo")]
         public ActionResult GetPessoaFisica(string PessoaFisica)
         {
-            var result = new Result<List<PessoaFisica>>();
+            var result = new Result<List<Model.PessoaFisica>>();
             try
             {
 
@@ -109,7 +108,7 @@ namespace HBSIS.Services.CRUD.PessoaFisica.Controllers
         [Route("PutBiruleiReinaldo")]
         public ActionResult PutPessoaFisica(string PessoaFisica, string NovaPessoaFisica)
         {
-            var result = new Result<List<PessoaFisica>>();
+            var result = new Result<List<Model.PessoaFisica>>();
             try
             {
                 result.Data = minhaLista.Where(x => x.Nome == PessoaFisica).ToList();
