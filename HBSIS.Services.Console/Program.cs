@@ -23,7 +23,32 @@ namespace HBSIS.Services
             Console.WriteLine(MeuDepartamento.Descricao);
             Console.WriteLine(MeuDepartamento.Ativo);
 
+
+            var lite = new LiteDB.LiteDatabase("");
+            lite.GetCollection<Departamento>().Insert(MeuDepartamento);
+
             Console.WriteLine(resultRead.Result);
+
+
+
+            var testedoido = new Curso()
+            {
+
+                nome = "Matematica",
+                materia = new System.Collections.Generic.List<Materia>() {
+                    new Materia(){
+                        Descricao = 1
+                    },
+                    new Materia(){ 
+                        Descricao = 2
+                    }
+                }
+
+            };
+
+
+
+
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();
