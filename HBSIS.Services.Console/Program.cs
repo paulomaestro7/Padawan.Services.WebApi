@@ -1,6 +1,7 @@
 ﻿using HBSIS.Services.Model;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 
 namespace HBSIS.Services
@@ -21,8 +22,16 @@ namespace HBSIS.Services
             var result = resultRequest.Result.Content.ReadAsStringAsync();
             result.Wait();
 
-            Console.WriteLine(result.Result);
+            List<PokemonGO> minhalista = new List<PokemonGO>();
+            minhalista = JsonConvert.DeserializeObject<List<PokemonGO>>(result.Result);
 
+            minhalista.ForEach(s => {
+                Console.WriteLine(s.Nome);
+                Console.WriteLine(s.Tipo);
+                Console.WriteLine(s.Forca);
+            });
+
+            Console.WriteLine(result.Result);
 
             //DELETE
             //GET
@@ -42,5 +51,11 @@ namespace HBSIS.Services
 
             Console.ReadLine();
         }
+    }
+    class PokemonGO
+    {
+        public string Nome { get; set; }
+        public string Tipo { get; set; }
+        public int Forca { get; set; }
     }
 }
