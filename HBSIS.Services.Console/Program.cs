@@ -9,48 +9,37 @@ namespace HBSIS.Services
     {
         static void Main(string[] args)
         {
-            var URL = "http://localhost:5000/DepartamentoAPI/Departamento"; 
+
+            //GET
+            //http://localhost:21725/PokemonAPI/Pokemon
+            var URL = "http://localhost:5000/PokemonAPI/Pokemon";
+
             var httpClient = new HttpClient();
-            var result = httpClient.GetAsync(URL);
+            var resultRequest = httpClient.GetAsync(URL);
+            resultRequest.Wait();
+
+            var result = resultRequest.Result.Content.ReadAsStringAsync();
             result.Wait();
 
-            var resultRead = result.Result.Content.ReadAsStringAsync();
-            resultRead.Wait();
-
-            Departamento MeuDepartamento = JsonConvert.DeserializeObject<Departamento>(resultRead.Result);
-
-            Console.WriteLine(MeuDepartamento.Id);
-            Console.WriteLine(MeuDepartamento.Descricao);
-            Console.WriteLine(MeuDepartamento.Ativo);
+            Console.WriteLine(result.Result);
 
 
-            var lite = new LiteDB.LiteDatabase("");
-            lite.GetCollection<Departamento>().Insert(MeuDepartamento);
+            //DELETE
+            //GET
+            //http://localhost:21725/PokemonAPI/Pokemon
 
-            Console.WriteLine(resultRead.Result);
+            Console.WriteLine("Digita algo ai:");
+            var nome = Console.ReadLine();
+            var resultRequestDelete = httpClient.GetAsync($"{ URL}?Nome={nome}");
+            resultRequestDelete.Wait();
 
+            var resultDelete = resultRequestDelete.Result.Content.ReadAsStringAsync();
+            result.Wait();
 
-
-            var testedoido = new Curso()
-            {
-
-                nome = "Matematica",
-                materia = new System.Collections.Generic.List<Materia>() {
-                    new Materia(){
-                        Descricao = 1
-                    },
-                    new Materia(){ 
-                        Descricao = 2
-                    }
-                }
-
-            };
+            Console.WriteLine(resultDelete.Result);
 
 
 
-
-
-            Console.WriteLine("Hello World!");
             Console.ReadLine();
         }
     }

@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.CRUD.Cep", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.Util", "HBSIS.Services.Util\HBSIS.Services.Util.csproj", "{596C6FB3-134F-438E-9D99-56E8BCF6E1C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBSIS.Services.Model", "HBSIS.Services.Model\HBSIS.Services.Model.csproj", "{06299DEE-11EB-4DF6-A547-71272B7F84DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.Model", "HBSIS.Services.Model\HBSIS.Services.Model.csproj", "{06299DEE-11EB-4DF6-A547-71272B7F84DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBSIS.Services.Console", "HBSIS.Services.Console\HBSIS.Services.Console.csproj", "{47A31177-1B3B-4E7B-A438-D91262573901}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.Console", "HBSIS.Services.Console\HBSIS.Services.Console.csproj", "{47A31177-1B3B-4E7B-A438-D91262573901}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBSIS.Services.DataBase", "HBSIS.Services.DataBase\HBSIS.Services.DataBase.csproj", "{AC55E58C-66A4-4952-9C31-672F26B334E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{47A31177-1B3B-4E7B-A438-D91262573901}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A31177-1B3B-4E7B-A438-D91262573901}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A31177-1B3B-4E7B-A438-D91262573901}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC55E58C-66A4-4952-9C31-672F26B334E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC55E58C-66A4-4952-9C31-672F26B334E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC55E58C-66A4-4952-9C31-672F26B334E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC55E58C-66A4-4952-9C31-672F26B334E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
