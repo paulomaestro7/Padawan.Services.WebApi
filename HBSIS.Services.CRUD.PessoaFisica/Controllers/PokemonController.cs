@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HBSIS.Services.CRUD.Controllers
@@ -25,6 +26,33 @@ namespace HBSIS.Services.CRUD.Controllers
         {
             return Ok(pokemonList);
         }
+
+
+        [HttpGet]
+        [Route("PokemonP")]
+        public ActionResult GetPokemon(string Nome)
+        {
+            var retorno = new Result<List<PokemonGO>>();
+
+            var result = pokemonList.Where(s => s.Nome == Nome).ToList();
+
+            if (result.Any())
+            {
+                retorno.Data = result;
+                retorno.Status = HttpStatusCode.OK;
+
+            }
+            else
+            {
+                retorno.Status = HttpStatusCode.BadRequest;
+                retorno.Error = true;
+                retorno.Message = "Não tem ninguem aqui, pesquisa invalida";
+            }
+            return Ok(retorno);
+
+        }
+
+
 
         [HttpDelete]
         [Route("Pokemon")]
@@ -60,5 +88,15 @@ namespace HBSIS.Services.CRUD.Controllers
         public string Nome { get; set; }
         public string Tipo { get; set; }
         public int Forca { get; set; }
+    }
+
+
+    class Result<T>
+    {
+        public T Data { get; set; }
+        public bool Error { get; set; }
+        public string Message { get; set; }
+        public HttpStatusCode Status { get; set; }
+
     }
 }
