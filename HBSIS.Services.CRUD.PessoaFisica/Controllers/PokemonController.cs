@@ -36,7 +36,7 @@ namespace HBSIS.Services.CRUD.Controllers
         {
             var retorno = new Result<List<PokemonGO>>();
 
-            var result = pokemonList.Where(s => s.Nome == Nome).ToList();
+            var result = pokemonList.Where(s => s.Nome.Contains(Nome)).ToList();
 
             if (result.Any())
             {
@@ -48,7 +48,7 @@ namespace HBSIS.Services.CRUD.Controllers
             {
                 retorno.Status = HttpStatusCode.BadRequest;
                 retorno.Error = true;
-                retorno.Message[0] = "Não tem ninguem aqui, pesquisa invalida";
+                retorno.Message = "Não tem ninguem aqui, pesquisa invalida";
             }
             return Ok(retorno);
 
@@ -96,7 +96,7 @@ namespace HBSIS.Services.CRUD.Controllers
             if (!teste.IsValid)
             {
                 resulPost.Error = true;
-                resulPost.Message = teste.Errors.Select(s => s.ErrorMessage).ToArray();
+                resulPost.Message = teste.Errors.Select(s => s.ErrorMessage).ToArray().FirstOrDefault();
                 resulPost.Status = HttpStatusCode.BadRequest;
                 return Ok(resulPost);
             }
@@ -129,7 +129,7 @@ namespace HBSIS.Services.CRUD.Controllers
     {
         public T Data { get; set; }
         public bool Error { get; set; }
-        public string[] Message { get; set; }
+        public string Message { get; set; }
         public HttpStatusCode Status { get; set; }
 
     }

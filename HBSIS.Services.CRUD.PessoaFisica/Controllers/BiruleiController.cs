@@ -60,7 +60,7 @@ namespace HBSIS.Services.CRUD.Controllers
                 if (result.Data.Count == 0)
                 {
                     result.Error = true;
-                    result.Message[0] = Message.NoSuccess;
+                    result.Message = Message.NoSuccess;
                     result.Status = System.Net.HttpStatusCode.InternalServerError;
 
                     return BadRequest(result);
@@ -68,7 +68,7 @@ namespace HBSIS.Services.CRUD.Controllers
                 else
                 {
                     result.Error = false;
-                    result.Message[0] = Message.Success;
+                    result.Message = Message.Success;
                     result.Status = System.Net.HttpStatusCode.InternalServerError;
 
                     return Ok(result);
@@ -77,7 +77,7 @@ namespace HBSIS.Services.CRUD.Controllers
             catch (Exception ex)
             {
                 result.Error = true;
-                result.Message[0] = Message.NoSuccess + ex.Message;
+                result.Message = Message.NoSuccess + ex.Message;
                 result.Status = System.Net.HttpStatusCode.InternalServerError;
 
                 return NotFound(result);
@@ -124,7 +124,7 @@ namespace HBSIS.Services.CRUD.Controllers
             catch (Exception ex)
             {
                 result.Error = true;
-                result.Message[0] = ex.Message;
+                result.Message = ex.Message;
                 return BadRequest(result);
             }
 
