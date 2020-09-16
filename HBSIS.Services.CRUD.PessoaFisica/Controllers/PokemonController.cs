@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using HBSIS.Services.Model;
+using HBSIS.Services.Validation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HBSIS.Services.CRUD.Controllers
@@ -46,7 +48,7 @@ namespace HBSIS.Services.CRUD.Controllers
             {
                 retorno.Status = HttpStatusCode.BadRequest;
                 retorno.Error = true;
-                retorno.Message = "Não tem ninguem aqui, pesquisa invalida";
+                retorno.Message[0] = "Não tem ninguem aqui, pesquisa invalida";
             }
             return Ok(retorno);
 
@@ -68,6 +70,43 @@ namespace HBSIS.Services.CRUD.Controllers
         }
 
 
+
+        [HttpPut]
+        [Route("Pokemon")]
+        public ActionResult putPokemon(string Nome, string NovoNome)
+        {
+            var result = pokemonList.Where(s => s.Nome.Contains(Nome)).ToList();
+
+            result.ForEach(s => {
+                pokemonList.Remove(s);
+            });
+
+            return Ok(pokemonList);
+        }
+
+        [HttpPost]
+        [Route("Pokemon")]
+        public ActionResult PostPokemon(PokemonGO Pokemon)
+        {
+            var resulPost = new Result<List<PokemonGO>>();
+
+            var validacao = new PokemonValidation();
+            var teste = validacao.Validate(Pokemon);
+
+            if (!teste.IsValid)
+            {
+                resulPost.Error = true;
+                resulPost.Message = teste.Errors.Select(s => s.ErrorMessage).ToArray();
+                resulPost.Status = HttpStatusCode.BadRequest;
+                return Ok(resulPost);
+            }
+
+            resulPost.Data = pokemonList;
+
+            return Ok(resulPost);
+        }
+
+
         private static List<PokemonGO> pokemonList = new List<PokemonGO>();
         private void PokemonGO()
         {
@@ -83,19 +122,14 @@ namespace HBSIS.Services.CRUD.Controllers
 
 
 
-    class PokemonGO
-    {
-        public string Nome { get; set; }
-        public string Tipo { get; set; }
-        public int Forca { get; set; }
-    }
+
 
 
     class Result<T>
     {
         public T Data { get; set; }
         public bool Error { get; set; }
-        public string Message { get; set; }
+        public string[] Message { get; set; }
         public HttpStatusCode Status { get; set; }
 
     }
