@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using HBSIS.Services.CRUD.PessoaFisica;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,16 +14,35 @@ namespace HBSIS.Services.CRUD.Controllers
         {
         }
 
-        [HttpGet]
+        static List<Model.Departamento> Minhalista = new List<Model.Departamento>();
+
+        [HttpPost]
         [Route("Departamento")]
-        public ActionResult GetDepartamento()
+        public ActionResult PostDepartamento(Model.Departamento Departamento)
         {
-            var result = new Model.Departamento()
+            Minhalista.Add(Departamento);
+
+            return Ok(Minhalista);
+        }
+
+        [HttpDelete]
+        [Route("Departamento")]
+        public ActionResult DeleteDepartamento(Guid Guid)
+        {
+            var result = new Result<List<Model.Departamento>>();
+
+            if (Minhalista.Where(s => s.Id == Guid).Any())
             {
-                Id = Guid.NewGuid(),
-                Ativo = true,
-                Descricao = "Tecnologia"
-            };
+                Minhalista.RemoveAll(s => s.Id == Guid);
+                result.Data = Minhalista;
+            }
+            else
+            {
+                result.Error = true;
+                result.Status = System.Net.HttpStatusCode.BadRequest;
+                result.Message = "Registro não localizado!";
+            }
+
             return Ok(result);
         }
 

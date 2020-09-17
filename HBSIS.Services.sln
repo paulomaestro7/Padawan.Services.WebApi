@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.Console", "H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.DataBase", "HBSIS.Services.DataBase\HBSIS.Services.DataBase.csproj", "{AC55E58C-66A4-4952-9C31-672F26B334E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBSIS.Services.Validation", "HBSIS.Services.Validation\HBSIS.Services.Validation.csproj", "{A50E16A6-59C8-44F8-A410-246E693361F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.Validation", "HBSIS.Services.Validation\HBSIS.Services.Validation.csproj", "{A50E16A6-59C8-44F8-A410-246E693361F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBSIS.Services.UI", "HBSIS.Services.UI\HBSIS.Services.UI.csproj", "{2A28265B-658F-4DC8-A426-7CB59970629B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HBSIS.Services.UI", "HBSIS.Services.UI\HBSIS.Services.UI.csproj", "{2A28265B-658F-4DC8-A426-7CB59970629B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBSIS.Services.Exemplo.UI", "HBSIS.Services.Exemplo.UI\HBSIS.Services.Exemplo.UI.csproj", "{590B2357-6FDA-479D-A6ED-586116994C3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{2A28265B-658F-4DC8-A426-7CB59970629B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A28265B-658F-4DC8-A426-7CB59970629B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A28265B-658F-4DC8-A426-7CB59970629B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{590B2357-6FDA-479D-A6ED-586116994C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{590B2357-6FDA-479D-A6ED-586116994C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{590B2357-6FDA-479D-A6ED-586116994C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{590B2357-6FDA-479D-A6ED-586116994C3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
